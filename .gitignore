@@ -1,0 +1,17 @@
+libraries/*
+modules/*
+themes/*
+profiles/panopoly
+profiles/commerce_kickstart
+profiles/commerce_deploy
+profiles/openatrium
+sites/panopoly
+sites/commerce_kickstart
+sites/commerce_deploy
+sites/drupal-7
+sites/drupal-8
+sites/openatrium
+.settings/*
+.buildpath
+.project
+.DS_Store

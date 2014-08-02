@@ -1,0 +1,451 @@
+---
+vagrantfile-local:
+    vm:
+        box: puphpet/ubuntu1204-x64
+        box_url: puphpet/ubuntu1204-x64
+        hostname: null
+        memory: '2048'
+        cpus: '2'
+        chosen_provider: virtualbox
+        network:
+            private_network: 192.168.56.101
+            forwarded_port:
+                a8aiI3POgXsW:
+                    host: '5096'
+                    guest: '22'
+        provider:
+            virtualbox:
+                modifyvm:
+                    natdnshostresolver1: on
+                setextradata:
+                    VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root: 1
+            vmware:
+                numvcpus: 1
+            parallels:
+                cpus: 1
+        provision:
+            puppet:
+                manifests_path: puphpet/puppet
+                manifest_file: site.pp
+                module_path: puphpet/puppet/modules
+                options:
+                    - '--verbose'
+                    - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
+                    - '--parser future'
+        synced_folder:
+            GMaKDyifxvbx:
+                source: /home/mglaman/Drupal/sites
+                target: /var/www
+                sync_type: default
+                rsync:
+                    args:
+                        - '--verbose'
+                        - '--archive'
+                        - '-z'
+                    exclude:
+                        - .vagrant/
+                    auto: 'false'
+        usable_port_range: 2200..2250
+    ssh:
+        host: null
+        port: null
+        private_key_path: null
+        username: vagrant
+        guest_port: null
+        keep_alive: true
+        forward_agent: false
+        forward_x11: false
+        shell: 'bash -l'
+    vagrant:
+        host: detect
+server:
+    install: '1'
+    packages: {  }
+firewall:
+    install: '1'
+    rules: null
+apache:
+    install: '1'
+    settings:
+        user: www-data
+        group: www-data
+        default_vhost: true
+        manage_user: false
+        manage_group: false
+        sendfile: 0
+    modules:
+        - rewrite
+    vhosts:
+        commercedeploy:
+            servername: commercedeploy.dev
+            serveraliases:
+                - www.commercedeploy.dev
+            docroot: /var/www/commerce_deploy
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            engine: php
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        commercekickstart:
+            servername: commercekickstart.dev
+            serveraliases:
+                - www.commercekickstart.dev
+            docroot: /var/www/commerce_kickstart
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            engine: php
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        drupal7:
+            servername: drupal7.dev
+            serveraliases:
+                - www.drupal7.dev
+            docroot: /var/www/drupal-7
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            engine: php
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        drupal8:
+            servername: drupal8.dev
+            serveraliases:
+                - www.drupal8.dev
+            docroot: /var/www/drupal-8
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            engine: php
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        glamanate:
+            servername: glamanate.dev
+            serveraliases:
+                - www.glamanate.dev
+            docroot: /var/www/glamanate
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            engine: php
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        panopoly:
+            servername: panopoly.dev
+            serveraliases:
+                - www.panopoly.dev
+            docroot: /var/www/panopoly
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            engine: php
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+    mod_pagespeed: 0
+    mod_spdy: 0
+nginx:
+    install: '0'
+    settings:
+        default_vhost: 1
+        proxy_buffer_size: 128k
+        proxy_buffers: '4 256k'
+    vhosts:
+        commercedeploy:
+            server_name: commercedeploy.dev
+            server_aliases:
+                - www.commercedeploy.dev
+            www_root: /var/www/commerce_deploy
+            listen_port: '80'
+            index_files:
+                - index.php
+            envvars:
+                - 'APP_ENV dev'
+            engine: php
+            ssl_cert: ''
+            ssl_key: ''
+        commercekickstart:
+            server_name: commercekickstart.dev
+            server_aliases:
+                - www.commercekickstart.dev
+            www_root: /var/www/commerce_kickstart
+            listen_port: '80'
+            index_files:
+                - index.php
+            envvars:
+                - 'APP_ENV dev'
+            engine: php
+            ssl_cert: ''
+            ssl_key: ''
+        drupal7:
+            server_name: drupal7.dev
+            server_aliases:
+                - www.drupal7.dev
+            www_root: /var/www/drupal-7
+            listen_port: '80'
+            index_files:
+                - index.php
+            envvars:
+                - 'APP_ENV dev'
+            engine: php
+            ssl_cert: ''
+            ssl_key: ''
+        drupal8:
+            server_name: drupal8.dev
+            server_aliases:
+                - www.drupal8.dev
+            www_root: /var/www/drupal-8
+            listen_port: '80'
+            index_files:
+                - index.php
+            envvars:
+                - 'APP_ENV dev'
+            engine: php
+            ssl_cert: ''
+            ssl_key: ''
+        glamanate:
+            server_name: glamanate.dev
+            server_aliases:
+                - www.glamanate.dev
+            www_root: /var/www/glamanate
+            listen_port: '80'
+            index_files:
+                - index.php
+            envvars:
+                - 'APP_ENV dev'
+            engine: php
+            ssl_cert: ''
+            ssl_key: ''
+        panopoly:
+            server_name: panopoly.dev
+            server_aliases:
+                - www.panopoly.dev
+            www_root: /var/www/panopoly
+            listen_port: '80'
+            index_files:
+                - index.php
+            envvars:
+                - 'APP_ENV dev'
+            engine: php
+            ssl_cert: ''
+            ssl_key: ''
+php:
+    install: '1'
+    version: '55'
+    composer: '1'
+    composer_home: ''
+    modules:
+        php:
+            - cli
+            - intl
+            - mcrypt
+            - gd
+            - curl
+            - mbstring
+        pear: {  }
+        pecl:
+            - pecl_http
+    ini:
+        display_errors: On
+        error_reporting: '-1'
+        session.save_path: /var/lib/php/session
+        memory_limit: '256M'
+    timezone: America/Chicago
+    mod_php: 0
+hhvm:
+    install: '0'
+    nightly: 0
+    composer: '1'
+    composer_home: ''
+    settings:
+        host: 127.0.0.1
+        port: '9000'
+    modules:
+        pear: {  }
+xdebug:
+    install: '0'
+    settings:
+        xdebug.default_enable: '1'
+        xdebug.remote_autostart: '0'
+        xdebug.remote_connect_back: '1'
+        xdebug.remote_enable: '1'
+        xdebug.remote_handler: dbgp
+        xdebug.remote_port: '9000'
+xhprof:
+    install: '0'
+drush:
+    install: '1'
+    version: 6.3.0
+ruby:
+    install: '1'
+    versions:
+        VhwdpyC0QBCv:
+            version: ''
+nodejs:
+    install: '0'
+    npm_packages: {  }
+mysql:
+    install: '1'
+    root_password: '123'
+    adminer: 0
+    databases:
+        commercedeploy:
+            grant:
+                - ALL
+            name: commercedeploy
+            host: localhost
+            user: commercedeploy
+            password: 'commercedeploy'
+            sql_file: ''
+        ck2:
+            grant:
+                - ALL
+            name: ck2
+            host: localhost
+            user: ck2
+            password: 'ck2'
+            sql_file: ''
+        drupal7:
+            grant:
+                - ALL
+            name: drupal7
+            host: localhost
+            user: drupal7
+            password: 'drupal7'
+            sql_file: ''
+        drupal8:
+            grant:
+                - ALL
+            name: drupal8
+            host: localhost
+            user: drupal8
+            password: 'drupal8'
+            sql_file: ''
+        glamanate:
+            grant:
+                - ALL
+            name: glamanate
+            host: localhost
+            user: glamanate
+            password: 'glamanate'
+            sql_file: ''
+        panopoly:
+            grant:
+                - ALL
+            name: panopoly
+            host: localhost
+            user: panopoly
+            password: 'panopoly'
+            sql_file: ''
+postgresql:
+    install: '0'
+    settings:
+        root_password: '123'
+        user_group: postgres
+        encoding: UTF8
+        version: '9.3'
+    databases: {  }
+    adminer: 0
+mariadb:
+    install: '0'
+    root_password: '123'
+    adminer: 0
+    databases: {  }
+    version: '10.0'
+sqlite:
+    install: '0'
+    adminer: 0
+    databases: {  }
+mongodb:
+    install: '0'
+    settings:
+        auth: 1
+        port: '27017'
+    databases: {  }
+redis:
+    install: '0'
+    settings:
+        conf_port: '6379'
+mailcatcher:
+    install: '0'
+    settings:
+        smtp_ip: 0.0.0.0
+        smtp_port: 1025
+        http_ip: 0.0.0.0
+        http_port: '1080'
+        mailcatcher_path: /usr/local/rvm/wrappers/default
+beanstalkd:
+    install: '0'
+    settings:
+        listenaddress: 0.0.0.0
+        listenport: '13000'
+        maxjobsize: '65535'
+        maxconnections: '1024'
+        binlogdir: /var/lib/beanstalkd/binlog
+        binlogfsync: null
+        binlogsize: '10485760'
+    beanstalk_console: 0
+    binlogdir: /var/lib/beanstalkd/binlog
+rabbitmq:
+    install: '0'
+    settings:
+        port: '5672'
+elastic_search:
+    install: '0'
+    settings:
+        java_install: true
+        autoupgrade: true
