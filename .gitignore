@@ -1,17 +1,17 @@
+# Ex: projects being worked on kept in same folder, such as modules maintained.
 libraries/*
 modules/*
 themes/*
-profiles/panopoly
-profiles/commerce_kickstart
-profiles/commerce_deploy
-profiles/openatrium
-sites/panopoly
-sites/commerce_kickstart
-sites/commerce_deploy
-sites/drupal-7
-sites/drupal-8
-sites/openatrium
+
+# We want to utilize build scripts for fresh projects
+profiles/*
+!profiles/empty
+sites/*
+!sites/empty
+
+# Junk files.
 .settings/*
+.vagrant/*
 .buildpath
 .project
 .DS_Store
