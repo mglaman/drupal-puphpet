@@ -10,7 +10,7 @@ vagrantfile-local:
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                a8aiI3POgXsW:
+                qM9xhu9R4GgK:
                     host: '5096'
                     guest: '22'
         provider:
@@ -33,10 +33,10 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            GMaKDyifxvbx:
-                source: /home/mglaman/Drupal/sites
+            JisLydux18O3:
+                source: ./sites
                 target: /var/www
-                sync_type: default
+                sync_type: nfs
                 rsync:
                     args:
                         - '--verbose'
@@ -76,7 +76,7 @@ apache:
     modules:
         - rewrite
     vhosts:
-        commercedeploy:
+        ZloUAyRYzGch:
             servername: commercedeploy.dev
             serveraliases:
                 - www.commercedeploy.dev
@@ -96,7 +96,7 @@ apache:
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        commercekickstart:
+        DQrpRecJ9Win:
             servername: commercekickstart.dev
             serveraliases:
                 - www.commercekickstart.dev
@@ -116,7 +116,7 @@ apache:
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        drupal7:
+        1OQymtNyun9w:
             servername: drupal7.dev
             serveraliases:
                 - www.drupal7.dev
@@ -136,7 +136,7 @@ apache:
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        drupal8:
+        rsV36xLhmCOs:
             servername: drupal8.dev
             serveraliases:
                 - www.drupal8.dev
@@ -156,27 +156,7 @@ apache:
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        glamanate:
-            servername: glamanate.dev
-            serveraliases:
-                - www.glamanate.dev
-            docroot: /var/www/glamanate
-            port: '80'
-            setenv:
-                - 'APP_ENV dev'
-            override:
-                - All
-            options:
-                - Indexes
-                - FollowSymLinks
-                - MultiViews
-            engine: php
-            custom_fragment: ''
-            ssl_cert: ''
-            ssl_key: ''
-            ssl_chain: ''
-            ssl_certs_dir: ''
-        panopoly:
+        MXXf1E0xYyY6:
             servername: panopoly.dev
             serveraliases:
                 - www.panopoly.dev
@@ -205,7 +185,7 @@ nginx:
         proxy_buffer_size: 128k
         proxy_buffers: '4 256k'
     vhosts:
-        commercedeploy:
+        mAGMvWWhPPin:
             server_name: commercedeploy.dev
             server_aliases:
                 - www.commercedeploy.dev
@@ -218,7 +198,7 @@ nginx:
             engine: php
             ssl_cert: ''
             ssl_key: ''
-        commercekickstart:
+        PoIzkHutuCXx:
             server_name: commercekickstart.dev
             server_aliases:
                 - www.commercekickstart.dev
@@ -231,7 +211,7 @@ nginx:
             engine: php
             ssl_cert: ''
             ssl_key: ''
-        drupal7:
+        9wEXsyoaL7dq:
             server_name: drupal7.dev
             server_aliases:
                 - www.drupal7.dev
@@ -244,7 +224,7 @@ nginx:
             engine: php
             ssl_cert: ''
             ssl_key: ''
-        drupal8:
+        0H08AtUGiZOm:
             server_name: drupal8.dev
             server_aliases:
                 - www.drupal8.dev
@@ -257,7 +237,7 @@ nginx:
             engine: php
             ssl_cert: ''
             ssl_key: ''
-        glamanate:
+        IMDxN2DS80CL:
             server_name: glamanate.dev
             server_aliases:
                 - www.glamanate.dev
@@ -270,7 +250,7 @@ nginx:
             engine: php
             ssl_cert: ''
             ssl_key: ''
-        panopoly:
+        0tTP8QztHjI5:
             server_name: panopoly.dev
             server_aliases:
                 - www.panopoly.dev
@@ -291,11 +271,11 @@ php:
     modules:
         php:
             - cli
-            - intl
-            - mcrypt
-            - gd
             - curl
+            - gd
+            - intl
             - mbstring
+            - mcrypt
         pear: {  }
         pecl:
             - pecl_http
@@ -303,7 +283,7 @@ php:
         display_errors: On
         error_reporting: '-1'
         session.save_path: /var/lib/php/session
-        memory_limit: '256M'
+        memory_limit: 256M
     timezone: America/Chicago
     mod_php: 0
 hhvm:
@@ -317,7 +297,7 @@ hhvm:
     modules:
         pear: {  }
 xdebug:
-    install: '0'
+    install: '1'
     settings:
         xdebug.default_enable: '1'
         xdebug.remote_autostart: '0'
@@ -333,63 +313,55 @@ drush:
 ruby:
     install: '1'
     versions:
-        VhwdpyC0QBCv:
+        jIzMSJ1YwPcb:
             version: ''
 nodejs:
     install: '0'
     npm_packages: {  }
 mysql:
     install: '1'
-    root_password: '123'
+    root_password: root
     adminer: 0
     databases:
-        commercedeploy:
+        rVp5r8acdH2g:
             grant:
                 - ALL
             name: commercedeploy
             host: localhost
             user: commercedeploy
-            password: 'commercedeploy'
+            password: commercedeploy
             sql_file: ''
-        ck2:
+        jzoeHmviwkaQ:
             grant:
                 - ALL
             name: ck2
             host: localhost
             user: ck2
-            password: 'ck2'
+            password: ck2
             sql_file: ''
-        drupal7:
+        LwEHsCfY7Tts:
             grant:
                 - ALL
             name: drupal7
             host: localhost
             user: drupal7
-            password: 'drupal7'
+            password: drupal7
             sql_file: ''
-        drupal8:
+        gjNRNwKAOF9J:
             grant:
                 - ALL
             name: drupal8
             host: localhost
             user: drupal8
-            password: 'drupal8'
+            password: drupal8
             sql_file: ''
-        glamanate:
-            grant:
-                - ALL
-            name: glamanate
-            host: localhost
-            user: glamanate
-            password: 'glamanate'
-            sql_file: ''
-        panopoly:
+        sxSkc0bTXaVT:
             grant:
                 - ALL
             name: panopoly
             host: localhost
             user: panopoly
-            password: 'panopoly'
+            password: panopoly
             sql_file: ''
 postgresql:
     install: '0'
@@ -449,3 +421,4 @@ elastic_search:
     settings:
         java_install: true
         autoupgrade: true
+
