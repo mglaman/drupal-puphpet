@@ -8,7 +8,7 @@ vagrantfile-local:
         cpus: '2'
         chosen_provider: virtualbox
         network:
-            private_network: 192.168.56.101
+            private_network: 10.22.22.10
             forwarded_port:
                 qM9xhu9R4GgK:
                     host: '5096'
@@ -141,6 +141,26 @@ apache:
             serveraliases:
                 - www.drupal8.dev
             docroot: /var/www/drupal-8
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            engine: php
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        openatrium:
+            servername: openatrium.dev
+            serveraliases:
+                - www.openatrium.dev
+            docroot: /var/www/openatrium
             port: '80'
             setenv:
                 - 'APP_ENV dev'
@@ -300,7 +320,7 @@ xdebug:
     install: '1'
     settings:
         xdebug.default_enable: '1'
-        xdebug.remote_autostart: '0'
+        xdebug.remote_autostart: '1'
         xdebug.remote_connect_back: '1'
         xdebug.remote_enable: '1'
         xdebug.remote_handler: dbgp
@@ -354,6 +374,14 @@ mysql:
             host: localhost
             user: drupal8
             password: drupal8
+            sql_file: ''
+        openatrium:
+            grant:
+                - ALL
+            name: openatrium
+            host: localhost
+            user: openatrium
+            password: openatrium
             sql_file: ''
         sxSkc0bTXaVT:
             grant:
@@ -421,4 +449,3 @@ elastic_search:
     settings:
         java_install: true
         autoupgrade: true
-
