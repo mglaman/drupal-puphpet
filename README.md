@@ -7,7 +7,7 @@ Configuring environments suck enough, so this project aims to be a one-stop-shop
 Currently the project just supports setting up various Drupal profiles to work on them (after all, a profile leads to a lot of contrib work and fixes!). Personally, I also keep any of my individual module work in this folder as well, for organization sake.
 
 ###Current development sites provided
-* [Commerce Deploy](https://www.drupal.org/project/commerce_deploy]): a distribution meant to spark Commerce contrib development, or simplify developers client work by bootstrapping a simple install.
+* [Commerce Deploy](https://www.drupal.org/project/commerce_deploy): a distribution meant to spark Commerce contrib development, or simplify developers client work by bootstrapping a simple install.
 * [Commerce Kickstart](https://www.drupal.org/project/commerce_kickstart): the most installed Drupal installation. Quickest way to deploy a fully functional Commerce site!
 * Drupal 7: A vanilla Drupal 7 site for regular module development. 
 * Drupal 8: A Drupal 8 environment for those bleeding edge folks!
