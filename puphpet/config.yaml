@@ -349,7 +349,7 @@ xhprof:
     install: '0'
 drush:
     install: '1'
-    version: 6.3.0
+    version: 7.0.0-alpha3
 ruby:
     install: '1'
     versions:
