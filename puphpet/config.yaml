@@ -76,6 +76,26 @@ apache:
     modules:
         - rewrite
     vhosts:
+        commerce2x:
+            servername: commerce2x.dev
+            serveraliases:
+                - www.commerce2x.dev
+            docroot: /var/www/commerce-2.x
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            engine: php
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
         ZloUAyRYzGch:
             servername: commercedeploy.dev
             serveraliases:
@@ -343,6 +363,14 @@ mysql:
     root_password: root
     adminer: 0
     databases:
+        commerce2x:
+            grant:
+                - ALL
+            name: commerce2x
+            host: localhost
+            user: commerce2x
+            password: commerce2x
+            sql_file: ''
         rVp5r8acdH2g:
             grant:
                 - ALL
