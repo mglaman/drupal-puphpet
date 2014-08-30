@@ -1,6 +1,6 @@
 #!/bin/sh
-ROOT_DIR=`dirname $(dirname $(readlink -f $0))`
-SITE_DIR=$ROOT_DIR/sites/commerce-2.x
+ROOT_DIR="$( cd "$( dirname "$( dirname "$0" )" )" && pwd )"
+SITE_DIR="$ROOT_DIR/sites/commerce-2.x"
 
 echo "Checking out latest of Drupal 8.0.x into sites..."
 if [ -d "$SITE_DIR" ]; then

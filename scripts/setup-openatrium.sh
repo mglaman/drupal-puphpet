@@ -1,5 +1,5 @@
 #!/bin/sh
-ROOT_DIR=`dirname $(dirname $(readlink -f $0))`
+ROOT_DIR="$( cd "$( dirname "$( dirname "$0" )" )" && pwd )"
 REPO_DIR=$ROOT_DIR/profiles/openatrium
 SITE_DIR=$ROOT_DIR/sites/openatrium
 

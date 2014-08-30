@@ -1,5 +1,5 @@
 #!/bin/sh
-ROOT_DIR=`dirname $(dirname $(readlink -f $0))`
+ROOT_DIR="$( cd "$( dirname "$( dirname "$0" )" )" && pwd )"
 SITE_DIR=$ROOT_DIR/sites/drupal-7
 
 echo "Checking out latest of Drupal 7.x into sites..."
