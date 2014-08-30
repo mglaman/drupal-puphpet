@@ -2,6 +2,12 @@
 ROOT_DIR="$( cd "$( dirname "$( dirname "$0" )" )" && pwd )"
 SITE_DIR="$ROOT_DIR/sites/commerce-2.x"
 
+echo "Setting up Commerce 2.x Dev Environment!"
+echo "Please make sure you have forked the repo:
+        https://github.com/commerceguys/commerce"
+echo "----------------------------------------------------"
+
+
 echo "Checking out latest of Drupal 8.0.x into sites..."
 if [ -d "$SITE_DIR" ]; then
   cd $SITE_DIR && git reset --hard HEAD && git pull
@@ -27,7 +33,10 @@ echo "Checkout out latest Commerce 8.x-2.x..."
 if [ -d "$SITE_DIR/modules/commerce" ]; then
   cd $SITE_DIR && git reset --hard HEAD && git pull
 else
-  git clone --branch 8.x-2.x git@github.com:commerceguys/commerce.git $SITE_DIR/modules/commerce
+  read -p "What is your GitHub username? I'll setup your fork: " origin
+  git clone --branch 8.x-2.x git@github.com:$origin/commerce.git $SITE_DIR/modules/commerce
+  cd $SITE_DIR/modules/commerce
+  git remote add upstream git@github.com:commerceguys/commerce.git && git fetch upstream
 fi
 
 echo "All set! Please review the README.md in the Commerce 2.x module folder."
