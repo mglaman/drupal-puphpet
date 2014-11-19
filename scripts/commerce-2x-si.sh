@@ -5,4 +5,4 @@ drush @drupal.commerce2x en devel simpletest -y
 # Commerce module (minus Price..requires a library and composer is still janked)
 drush @drupal.commerce2x en commerce commerce_order commerce_product
 # Composer update
-vagrant ssh -c "cd /var/www/drupal-8/sites/default/files/composer && composer update"
+vagrant ssh -c "cd /var/www/commerce-2.x/sites/default/files/composer && composer update"
