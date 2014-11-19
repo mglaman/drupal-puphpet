@@ -63,6 +63,17 @@ $aliases['drupal8'] = array(
    ),
 );
 
+$aliases['d8panels'] = array(
+  'uri' => 'd8panels.dev',
+  'remote-host' => '10.22.22.10',
+  'remote-user' => 'vagrant',
+  'ssh-options' => '-p 22 -i ' . $home . '/.vagrant.d/insecure_private_key',
+  'root' => '/var/www/d8-panels',
+  'path-aliases' => array(
+    '%files' => 'sites/default/files',
+  ),
+);
+
 $aliases['openatrium'] = array(
   'uri' => 'openatrium.dev',
   'remote-host' => '10.22.22.10',

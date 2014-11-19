@@ -136,6 +136,26 @@ apache:
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
+        d8panels:
+            servername: d8panels.dev
+            serveraliases:
+                - www.d8panels.dev
+            docroot: /var/www/d8-panels
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            engine: php
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
         1OQymtNyun9w:
             servername: drupal7.dev
             serveraliases:
@@ -418,6 +438,14 @@ mysql:
             host: localhost
             user: panopoly
             password: panopoly
+            sql_file: ''
+        d8panels:
+            grant:
+                - ALL
+            name: d8panels
+            host: localhost
+            user: d8panels
+            password: d8panels
             sql_file: ''
 postgresql:
     install: '0'
