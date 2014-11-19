@@ -9,6 +9,7 @@ Currently the project just supports setting up various Drupal profiles to work o
 ###Current development sites provided
 * [Commerce Deploy](https://www.drupal.org/project/commerce_deploy): a distribution meant to spark Commerce contrib development, or simplify developers client work by bootstrapping a simple install.
 * [Commerce Kickstart](https://www.drupal.org/project/commerce_kickstart): the most installed Drupal installation. Quickest way to deploy a fully functional Commerce site!
+* [Commerce 2.x](https://github.com/commerceguys/commerce): Commerce 2.x development environment.
 * Drupal 7: A vanilla Drupal 7 site for regular module development.
 * Drupal 8: A Drupal 8 environment for those bleeding edge folks!
 * [Open Atrium](https://www.drupal.org/project/openatrium) an intranet in a box! Built on the Panopoly distribution it provides an "extensible collaboration framework"
