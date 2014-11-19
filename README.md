@@ -14,6 +14,7 @@ Currently the project just supports setting up various Drupal profiles to work o
 * Drupal 8: A Drupal 8 environment for those bleeding edge folks!
 * [Open Atrium](https://www.drupal.org/project/openatrium) an intranet in a box! Built on the Panopoly distribution it provides an "extensible collaboration framework"
 * [Panopoly](https://www.drupal.org/project/panopoly)!: Panopoly is powerful base distribution of Drupal powered by lots of Chaos Tools and Panels magic.
+* [Panels in D8](https://www.drupal.org/node/2169319): A development environment for Drupal 8 and Page Manager, Layout Plugin, and Panels.
 
 ###How to setup Drupal PuPHPet
 @todo: Fill this out better, but for now..
