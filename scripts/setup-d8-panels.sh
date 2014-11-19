@@ -24,7 +24,7 @@ else
 fi
 
 echo "Checkout out latest Panels Sandbox..."
-if [ -d "${SITE_DIR}/modules/layout_plugin" ]; then
+if [ -d "${SITE_DIR}/modules/d8panels" ]; then
   cd $SITE_DIR && git reset --hard HEAD && git pull
 else
   git clone --branch d8panels http://git.drupal.org/sandbox/dsnopek/2290237.git ${SITE_DIR}/modules/d8panels
